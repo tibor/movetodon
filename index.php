@@ -75,10 +75,6 @@
     <a rel="me" href="https://mastodon.social/@Tibor">I’m @tibor@mastodon.social</a>
 </footer>
 <script src='/vue.global.prod.min.js'></script>
-<?php if(isset($_GET['debug'])):?>
-<script src="/script.js?<?php echo filemtime('new.js'); ?>"></script>
-<?php else:?>
 <script src="/script.js?<?php echo filemtime('script.js'); ?>"></script>
-<?php endif;?>
 </body>
 </html>
