@@ -246,6 +246,7 @@ createApp({
         getMastodonUserFromTwitter(userToCheck) {
             const mastodonRegex = /(@[\d\w_]+@\S+\.[\d\w]{2,})|(([\d\w_]+@\S*social(\S*\.)+\w+)($|[\s\/]))|((^|[\s\D\W@])[\d\w_]+@\S+\.\w{4,}($|[\/\s\)]))|((https?:\/\/)?([\d\w\-]+(?=\.)\.)+\w{2,}\/(web\/)?@[\d\w]+)|([\d\w_]+@(mas|mstdn)[\d\w\-\.]*\.[\d\w]+)/gi
             let mastodonUser;
+            let mastodonUser2 = {};
             [
                 userToCheck?.status?.urls?.map(a => a.expanded_url),
                 [userToCheck?.tweet?.text],
@@ -268,15 +269,19 @@ createApp({
                             "tap.bio",
                             "flipboard.com"
                         ].some((domain) => strToCheck.includes(domain)) &&
-                        (matches = strToCheck.match(mastodonRegex))
+                        (mastodonStr = strToCheck.match(mastodonRegex))
                     ) {
-                        mastodonUser = [this.switchMastodonHandleUrl(matches[0])];
-                        let mastodonUser2
-                        mastodonUser2 = matches.map( match => this.switchMastodonHandleUrl(match) )
-                        console.log(matches, mastodonUser, mastodonUser2)
+                        mastodonUser = mastodonStr.map( match => this.switchMastodonHandleUrl(match) )
+                        mastodonUser.forEach( user =>
+                        {
+                            mastodonUser2[user.handle] = user
+                        }
+                        )
                     }
                 })
             });
+            if(Object.keys(mastodonUser2).length === 0) return null
+            return Object.values(mastodonUser2)
             return mastodonUser;
         },
         switchMastodonHandleUrl(mastodonStr) {

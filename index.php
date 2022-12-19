@@ -57,7 +57,7 @@
                         <th @click="sortByValue('mastodonRecentPostAge')" class="pt05 pr05 pb05 pl05 cp">Active {{sortIndicator('mastodonRecentPostAge')}}</th>
                         <th class="pt05 pr05 pb05 pl05"><button @click.prevent="followAll()" class="pt025 pr05 pb025 pl05 button bggrad br025">Follow all</button></th>
                     </tr>
-                    <tr v-for="user in usersArray" :key="user.userId">
+                    <tr v-for="user in usersArray" :key="user.userId + user.mastodonUserId">
                         <td class="pt025 pr025 pb025 pl05"><img :src="user.profileImage" class="br100" width=40 height=40 loading=lazy></td>
                         <td class="pt025 pr05 pb025 pl05" :title="user.description"><strong>{{user.userName}}</strong>
                         <div class="fs0625 cp">T: <a :href="'https://twitter.com/' + user.twitterHandle" rel="noopener nofollow" class="noa" target="_blank">@{{user.twitterHandle}}</a><br>
