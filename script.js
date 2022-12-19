@@ -178,18 +178,12 @@ createApp({
                 expansions: "pinned_tweet_id",
                 "tweet.fields": "author_id,entities"
             }
-            //idsplice.forEach(id => this.users.delete(id))
             fetch(`${this.domain}/api/?api=users&params=${encodeURI(JSON.stringify(params))}&oauth_token=${this.twitterToken.token}&oauth_token_secret=${this.twitterToken.secret}&use=2`)
                 .then( a => {
                     if(!a.ok) throw new Error('API Fehler')
                     return a.json()
                 })
                 .then( users => {
-                    /*if(users?.errors){
-                        this.pause(a?.seconds * 1000 || 60000)
-                            .then( () => this.getTwitterFriendsList() )
-                        throw new Error('break')
-                    }*/
                     users.data.forEach( user => {
                         this.users.delete(user.id)
                         user.tweet = users.includes.tweets.find( tweet => tweet.id === user.pinned_tweet_id )
@@ -250,15 +244,6 @@ createApp({
                 });
         },
         getMastodonUserFromTwitter(userToCheck) {
-/*            const mastodonRegex = [
-                /(@[\d\w_]+@[\S]+\.[\d\w]{2,})/gi,
-                /(([\d\w_]+@\S*social(\S*\.)+\w+)($|[\s\/]))/gi,
-                /((^|[\s\D\W@])[\d\w_]+@\S+\.\w{4,}($|[\/\s\)]))/gi,
-                /((https?:\/\/)?[\d\w\-\.]+\.\w{2,}\/@[\d\w]+)/gi,
-                /([\d\w_]+@(mas|mstdn)[\d\w\-\.]*\.[\d\w]+)/gi,
-                /https:\/\/\w+/,
-                ((https?:\/\/)?[\d\w\-\.]+\.\w{2,}\/(web\/)?@[\d\w]+)
-            ]*/
             const mastodonRegex = /(@[\d\w_]+@\S+\.[\d\w]{2,})|(([\d\w_]+@\S*social(\S*\.)+\w+)($|[\s\/]))|((^|[\s\D\W@])[\d\w_]+@\S+\.\w{4,}($|[\/\s\)]))|((https?:\/\/)?([\d\w\-]+(?=\.)\.)+\w{2,}\/(web\/)?@[\d\w]+)|([\d\w_]+@(mas|mstdn)[\d\w\-\.]*\.[\d\w]+)/gi
             let mastodonUser;
             [
