@@ -1,0 +1,267 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('fonts/subset-Roboto-Regular.woff2') format('woff2'),
+        url('fonts/subset-Roboto-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('fonts/subset-Roboto-Bold.woff2') format('woff2'),
+        url('fonts/subset-Roboto-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --fff: hsl(240deg 5% 5%);
+    --lessfff: hsl(240deg, 5%, 10%);
+    --000: hsl(240, 5%, 90%);
+    --less000: hsl(240, 5%, 70%);
+    --purple: #595aff;
+    --tw: #1da1f2;
+    --lh: 1.25;
+    --grad: linear-gradient(-45deg, hsl(200deg 70% 50%), hsl(155deg 70% 50%));
+    color-scheme: light dark;
+    font-size: 125%;
+    font-family: Roboto, sans-serif;
+    background: var(--000);
+    color: var(--fff);
+    line-height: var(--lh);
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+* {
+    font-size: inherit;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.fs125 {
+    font-size: 1.25rem;
+    --lh: 1;
+}
+
+.fs0625 {
+    font-size: 0.625rem;
+    #line-height: calc(var(--lh) / 0.75);
+}
+
+.df {
+    display: flex;
+}
+
+.aib{
+    align-items: baseline
+}
+
+.jcfe {
+    justify-content: flex-end;
+}
+
+.jcsb{
+    justify-content: space-between;
+}
+
+.noa {
+    color: var(--purple);
+    text-decoration: none;
+}
+
+.cp {
+    cursor: pointer;
+}
+
+.mw {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mwmain {
+    max-width: calc(35rem * var(--lh));
+    width: calc(100% - 1rem * var(--lh));
+}
+
+.mw100 {
+    max-width: 100%;
+}
+
+.miw100{
+    min-width: 100%
+}
+
+.oxs {
+    overflow-x: scroll;
+}
+
+.mt05 {
+    margin-top: calc(0.5rem * var(--lh));
+}
+
+.mt10 {
+    margin-top: calc(1rem * var(--lh));
+}
+
+.ml05 {
+    margin-left: calc(0.5rem * var(--lh));
+}
+
+.pt05 {
+    padding-top: calc(0.5rem * var(--lh));
+}
+
+.pr05 {
+    padding-right: calc(0.5rem * var(--lh));
+}
+
+.pb05 {
+    padding-bottom: calc(0.5rem * var(--lh));
+}
+
+.pl05 {
+    padding-left: calc(0.5rem * var(--lh));
+}
+
+.pt025 {
+    padding-top: calc(0.25rem * var(--lh));
+}
+
+.pr025 {
+    padding-right: calc(0.25rem * var(--lh));
+}
+
+.pb025 {
+    padding-bottom: calc(0.25rem * var(--lh));
+}
+
+.pl025 {
+    padding-left: calc(0.25rem * var(--lh));
+}
+
+.br100 {
+    border-radius: 100px;
+}
+
+.br025 {
+    border-radius: calc(0.25rem * var(--lh));
+}
+
+.noa {
+    text-decoration: none;
+    color: currentColor;
+}
+
+.login {
+    #border: 2px solid var(--fff);
+    #border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0px 10px 120px -80px var(--lessfff);
+    background: var(--000);
+}
+
+.loggedin {
+    opacity: 0.8;
+}
+
+.tac {
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    background: var(--tw);
+    color: var(--fff);
+    text-decoration: none;
+    min-width: 112px;
+}
+
+.mastodonButton {
+    background-color: var(--purple);
+}
+
+.bggrad {
+    background: var(--grad);
+}
+
+.accent {
+    position: relative;
+    z-index: 5;
+}
+
+.accent::after {
+    position: absolute;
+    content: "";
+    transform: rotate(-0.5deg);
+    bottom: -0.25rem;
+    left: 0;
+    width: 100%;
+    height: calc(0.25em * var(--lh));
+    background: var(--grad);
+    z-index: -1;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/*tr:nth-child(2n) {
+    background: var(--less000)
+}*/
+
+td{
+    border-top: 1px dotted var(--fff);
+}
+
+button {
+    color: var(--fff);
+    min-width: 112px;
+}
+
+button:hover,
+a:hover {
+    --purple: #6364ff;
+}
+
+button.transparent {
+    background-color: transparent;
+    border: 1px solid var(--purple);
+    color: var(--purple);
+}
+
+th {
+    text-align: left;
+}
+
+@media(prefers-color-scheme: dark){
+    :root{
+    --000: hsl(240deg 5% 5%);
+    --less000: hsl(240deg, 5%, 10%);
+    --fff: hsl(240, 5%, 90%);
+    --lessfff: hsl(240, 5%, 70%);
+    --purple: #595aff;
+    --tw: #1da1f2;
+    --lh: 1.25;
+
+}
+}
+
+@media(max-width: 600px){
+    :root{
+        font-size: 100%;
+    }
+}
